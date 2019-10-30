@@ -1,7 +1,7 @@
 #ifndef FILA_LISTA_CIRCULAR_ENCADEADA_H
 #define FILA_LISTA_CIRCULAR_ENCADEADA_H
 
-void cria_fila();
+int cria_fila();
 
 int enfileira(int x);
 
