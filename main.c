@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "fila_vetor.h"
 
+int opcao;
 int num_elements, element;
 
 void inserir()
@@ -40,4 +41,37 @@ void remover()
             break;
         }
     }
+}
+
+void menu()
+{
+    printf("===========MENU===========\n\n");
+    printf("1 - Inserir elementos na fila\n");
+    printf("2 - Remover elementos da fila\n");
+    printf("3 - Imprimir fila\n");
+    printf("4 - Reiniciar fila\n");
+    printf("5 - Sair\n\n");
+
+    printf("Escolha uma opção: %d\n", opcao);
+    switch (opcao)
+    {
+    case 1:
+        inserir();
+        break;
+    case 2:
+        remover();
+        break;
+    case 3:
+        imprime_fila();
+        break;
+    case 5:
+        exit(1);
+        break;
+    default:
+        printf("Está opção é inválida, por favor digite novamente: ");
+    }
+
+    printf("\n");
+    system("pause");
+    system("cls || clear");
 }
