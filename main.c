@@ -41,6 +41,7 @@ void remover()
         {
             desenfileira(&element);
             printf("Elemento removido: %d\n", element);
+            qtd_removed++;
         }
         else
         {
@@ -66,7 +67,8 @@ void menu()
     printf("5 - Tamanho da fila\n");
     printf("0 - Sair\n\n");
 
-    printf("Escolha uma opção: %d\n", opcao);
+    printf("Escolha uma opção: ");
+    scanf("%d", &opcao);
     switch (opcao)
     {
     case 1:
@@ -92,6 +94,19 @@ void menu()
     }
 
     printf("\n");
-    system("pause");
-    system("cls || clear");
+    printf("Pressione um número para continuar. . .\n");
+    int pause;
+    scanf("%d", &pause);
+    system("clear || cls");
+}
+
+int main()
+{
+    cria_fila();
+    while (1)
+    {
+        system("clear || cls");
+        menu();
+    }
+    return 0;
 }
