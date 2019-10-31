@@ -11,7 +11,7 @@ int fila_cheia();
 
 int fila_vazia();
 
-int tamanho_fila();
+void tamanho_fila();
 
 void imprime_fila();
 
