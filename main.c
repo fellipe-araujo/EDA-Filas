@@ -43,6 +43,12 @@ void remover()
     }
 }
 
+void reiniciar()
+{
+    cria_fila();
+    printf("Fila reiniciada!\n");
+}
+
 void menu()
 {
     printf("===========MENU===========\n\n");
@@ -63,6 +69,9 @@ void menu()
         break;
     case 3:
         imprime_fila();
+        break;
+    case 4:
+        reiniciar();
         break;
     case 5:
         exit(1);
