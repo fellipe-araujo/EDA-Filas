@@ -63,7 +63,8 @@ void menu()
     printf("2 - Remover elementos da fila\n");
     printf("3 - Imprimir fila\n");
     printf("4 - Reiniciar fila\n");
-    printf("5 - Sair\n\n");
+    printf("5 - Tamanho da fila\n");
+    printf("0 - Sair\n\n");
 
     printf("Escolha uma opção: %d\n", opcao);
     switch (opcao)
@@ -81,6 +82,9 @@ void menu()
         reiniciar();
         break;
     case 5:
+        tamanho_fila();
+        break;
+    case 0:
         exit(1);
         break;
     default:
