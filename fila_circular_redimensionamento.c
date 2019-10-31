@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "fila_circular_redimensionamento.h"
 
-static int *fila;
-static int N, p, u;
+int *fila;
+int N, p, u;
 
 void cria_fila()
 {
@@ -24,6 +24,13 @@ int enfileira(int x)
             return 1;
         }
     }
+    else
+    {
+        fila[u] = x;
+        u = (u + 1) % N;
+        return 1;
+    }
+
     return 0;
 }
 
@@ -50,14 +57,14 @@ int fila_vazia()
     return 0;
 }
 
-int tamanho_fila()
+void tamanho_fila()
 {
     int tamanho = u - p;
     if (p > u)
     {
         tamanho += N;
     }
-    return tamanho;
+    printf("Tamanho da fila: %d\n", tamanho);
 }
 
 void imprime_fila()
@@ -80,7 +87,11 @@ void imprime_fila()
     printf("\n");
     for (int i = 0; i < N; i++)
     {
-        if (i == p)
+        if (i == p && i == u)
+        {
+            printf("  p u ");
+        }
+        else if (i == p)
         {
             printf("   p  ");
         }
@@ -104,19 +115,22 @@ int redimensiona()
         return 0;
     if (u != N - 1)
     {
-        for (i = N, j = 0; j < u; i++, j++)
+        if (u - 1 < N - p)
         {
-            fila[i] = fila[j];
+            for (i = N, j = 0; j < u; i++, j++)
+            {
+                fila[i] = fila[j];
+            }
+            u = N + u;
         }
-        u = N + u;
-    }
-    else
-    {
-        for (i = p, j = N + p; i < N; i++, j++)
+        else
         {
-            fila[j] = fila[i];
+            for (i = p, j = N + p; i < N; i++, j++)
+            {
+                fila[j] = fila[i];
+            }
+            p = N + p;
         }
-        p = N + p;
     }
     N *= 2;
     return 1;
