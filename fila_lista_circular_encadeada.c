@@ -6,9 +6,10 @@ typedef struct celula
 {
     int dado;
     struct celula *prox;
-    int N;
 } celula;
 
+int N;
+int p, u;
 celula *fila;
 
 int cria_fila()
@@ -17,7 +18,7 @@ int cria_fila()
     if (fila == NULL)
         return 0;
     fila->prox = fila;
-    fila->N = 0;
+    N = 0;
     return 1;
 }
 
@@ -30,7 +31,8 @@ int enfileira(int x)
     fila->prox = novo;
     fila->dado = x;
     fila = novo;
-    fila->N++;
+    u = u + 1;
+    N++;
     return 1;
 }
 
@@ -41,7 +43,8 @@ int desenfileira(int *x)
     celula *lixo = fila->prox;
     *x = lixo->dado;
     fila->prox = lixo->prox;
-    fila->N--;
+    u = u - 1;
+    N--;
     free(lixo);
     return 1;
 }
@@ -53,26 +56,60 @@ int fila_vazia()
     return 0;
 }
 
-int tamanho_fila()
+void tamanho_fila()
 {
-    return fila->N;
+    printf("Tamanho da fila: %d\n", N);
 }
 
 void imprime_fila()
 {
-    printf(" ");
-    for (int i = 0; i < fila->N; i++)
+    celula *imprime;
+    int i;
+    if (N > 0)
     {
-        printf("------");
+        printf(" ");
+        for (int i = 0; i < N; i++)
+        {
+            printf("------");
+        }
+        printf("\n");
+        if (imprime != fila)
+        {
+            for (imprime = fila, i = 0; i <= N; imprime = imprime->prox, i++)
+            {
+                if (imprime == fila)
+                    continue;
+                printf("| %03d ", imprime->dado);
+            }
+        }
+        printf(" |\n ");
+        for (int i = 0; i < N; i++)
+        {
+            printf("------");
+        }
+        printf("\n");
+        for (int i = 0; i <= N; i++)
+        {
+            if (i == p && i == u)
+            {
+                printf("  p u ");
+            }
+            else if (i == p)
+            {
+                printf("   p  ");
+            }
+            else if (i == u)
+            {
+                printf("   u  ");
+            }
+            else
+            {
+                printf("      ");
+            }
+        }
     }
-    printf("\n");
-    for (int i = 0; i < fila->N; i++)
+    else
     {
-        printf("| %03d ", fila[i]);
-    }
-    printf(" |\n ");
-    for (int i = 0; i < fila->N; i++)
-    {
-        printf("------");
+        printf("Fila vazia!\n");
     }
 }
