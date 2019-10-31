@@ -10,10 +10,17 @@ void inserir()
     int qtd_insered = 0;
     printf("Digite quantos elementos você deseja inserir: ");
     scanf("%d", &num_elements);
-    for (int i = 0; i < num_elements; i++)
+    printf("\nDigite elementos que possuam o valor entre 1 e 999.\n");
+    for (int i = 1; i <= num_elements; i++)
     {
         printf("Elemento %d: ", i);
         scanf("%d", &element);
+        while (element < 1 || element > 999)
+        {
+            printf("Elemento inválido! por favor, digite novamente.\n");
+            printf("Elemento %d: ", i);
+            scanf("%d", &element);
+        }
         if (enfileira(element))
             qtd_insered++;
     }
